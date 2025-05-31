@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quốc tế thiếu nhi 1/6 🎈</title>
     <style>
         body {
@@ -10,14 +11,14 @@
             padding: 0;
             font-family: 'Comic Sans MS', cursive, sans-serif;
             background: linear-gradient(to top right, #a1c4fd, #c2e9fb);
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         h1 {
             text-align: center;
             color: #fff;
-            margin-top: 50px;
-            font-size: 3rem;
+            margin: 40px 20px 20px;
+            font-size: 2.5rem;
             text-shadow: 2px 2px 5px #ff6f61;
             animation: pop 2s ease-in-out infinite;
         }
@@ -40,7 +41,7 @@
             width: 60px;
             height: 80px;
             background-color: red;
-            border-radius: 50% 50% 50% 50%;
+            border-radius: 50%;
             animation: float 8s linear infinite;
             box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
         }
@@ -50,6 +51,7 @@
             position: absolute;
             bottom: -20px;
             left: 50%;
+            transform: translateX(-50%);
             width: 2px;
             height: 20px;
             background: #333;
@@ -73,12 +75,12 @@
 
         button {
             display: block;
-            margin: 60px auto;
-            padding: 15px 30px;
+            margin: 40px auto;
+            padding: 14px 28px;
             background: #ff6f61;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1.2rem;
             cursor: pointer;
             transition: 0.3s ease-in-out;
@@ -86,10 +88,9 @@
 
         button:hover {
             background: #e94e4f;
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
-        /* Pop-up */
         .popup {
             display: none;
             position: fixed;
@@ -97,13 +98,14 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
-            padding: 30px;
-            border-radius: 10px;
+            padding: 24px;
+            border-radius: 12px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #ff6f61;
+            max-width: 80%;
         }
 
         .overlay {
@@ -116,6 +118,29 @@
             background: rgba(0, 0, 0, 0.4);
             z-index: 999;
         }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+                margin-top: 20px;
+            }
+
+            button {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+
+            .popup {
+                font-size: 1.1rem;
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            .balloon {
+                width: 40px;
+                height: 60px;
+            }
+        }
     </style>
 </head>
 
@@ -124,16 +149,15 @@
     <h1>🌈 Chào mừng Quốc tế Thiếu nhi 1/6! 🌈</h1>
     <button onclick="showPopup()">Click Here</button>
 
-    <!-- Popup -->
     <div class="overlay" id="overlay" onclick="hidePopup()"></div>
     <div class="popup" id="popup">
         🎉 Chúc Nhi thiếu nhi vui vẻ 🎉
     </div>
 
     <script>
-        // Generate multiple balloons
+        // Tạo bóng bay ngẫu nhiên
         for (let i = 0; i < 20; i++) {
-            let b = document.createElement("div");
+            const b = document.createElement("div");
             b.className = "balloon";
             b.style.left = Math.random() * 100 + "vw";
             b.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 70%)`;
